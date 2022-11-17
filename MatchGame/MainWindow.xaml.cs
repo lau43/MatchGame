@@ -51,7 +51,8 @@ namespace MatchGame
                 animalEmoji.RemoveAt(index);
             }
         }
-
+        TextBlock lastTextBlockClicked;
+        bool findingMatch = false;
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
