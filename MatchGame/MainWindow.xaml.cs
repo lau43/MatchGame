@@ -34,6 +34,14 @@ namespace MatchGame
             SetUpGame();
         }
 
+        private void TimeTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (matchesFound == 8)
+            {
+                SetUpGame();
+            }
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             tenthsOfSecondsElapsed++;
@@ -72,6 +80,9 @@ namespace MatchGame
                     animalEmoji.RemoveAt(index);
                 }
             }
+            timer.Start();
+            tenthsOfSecondsElapsed = 0;
+            matchesFound = 0;
         }
         TextBlock lastTextBlockClicked;
         bool findingMatch = false;
@@ -90,6 +101,7 @@ namespace MatchGame
             }
             else if (textBlock.Text == lastTextBlockClicked.Text)
             {
+                matchesFound++;
                 textBlock.Visibility = Visibility.Hidden;
                 findingMatch = false;
             }
